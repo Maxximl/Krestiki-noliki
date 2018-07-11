@@ -3,7 +3,7 @@
 #include <QtWidgets>
 #include <QMessageBox>
 Widget::Widget(QWidget *parent) :
-    QWidget(parent),
+    QMainWindow(parent),
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
@@ -39,11 +39,15 @@ Widget::Widget(QWidget *parent) :
     grid->addWidget(btn_bl,3,0);
     grid->addWidget(btn_bm,3,1);
     grid->addWidget(btn_br,3,2);
-    grid->addWidget(btn_clear,4,0,1,3,Qt::AlignCenter);
-    setLayout(grid);
+
+
+    QWidget * centralWidget = new QWidget(this);
+    centralWidget->setLayout(grid);
+    setCentralWidget(centralWidget);
+
     //Размер и название окна
-    resize(300,300);
-    setWindowTitle("Крестики-нолики");
+//    resize(300,300);
+//    setWindowTitle("Крестики-нолики");
     //Задаем политику размера
     btn_tl->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Preferred);
     btn_tm->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Preferred);
@@ -82,18 +86,11 @@ Widget::Widget(QWidget *parent) :
 
 }
 
-Widget::~Widget()
-{
-    delete ui;
-}
 
-void Widget::addX(int x){
 
-}
 
-void Widget::add0(int o){
 
-}
+
 
 void Widget::clear(){
 btn_tl->setText("");
@@ -105,67 +102,143 @@ btn_mr->setText("");
 btn_bl->setText("");
 btn_bm->setText("");
 btn_br->setText("");
-
-if(plname=="Player 1"){
-player_name1->setText("Player 2");
-plname="Player 2";}
-else if(plname=="Player 2"){
-player_name1->setText("Player 1");
- plname="Player 1";}
+changePlName();
 }
 
 void Widget::buttonpressed(int xo) {
     if (player_name1->text()=="Player 1"){
       switch(xo){
-      case 1: btn_tl->setText("X");
-
+      case 1: if(btn_tl->text().isEmpty()){
+              btn_tl->setText("X");
+              checkWin();
+            player_name1->setText("Player 2"); }//теперь первым ходит второй игрок
           break;
-      case 2: btn_tm->setText("X");
+      case 2: if(btn_tm->text().isEmpty()){
+              btn_tm->setText("X");
+              checkWin();
+           player_name1->setText("Player 2"); }//теперь первым ходит второй игрок
           break;
-      case 3: btn_tr->setText("X");
+      case 3: if(btn_tr->text().isEmpty()){
+              btn_tr->setText("X");
+              checkWin();
+           player_name1->setText("Player 2");} //теперь первым ходит второй игрок
           break;
-      case 4: btn_ml->setText("X");
+      case 4: if(btn_ml->text().isEmpty()){
+              btn_ml->setText("X");
+              checkWin();
+           player_name1->setText("Player 2");} //теперь первым ходит второй игрок
           break;
-      case 5: btn_mm->setText("X");
+      case 5: if(btn_mm->text().isEmpty()){
+              btn_mm->setText("X");
+              checkWin();
+           player_name1->setText("Player 2");} //теперь первым ходит второй игрок
           break;
-      case 6: btn_mr->setText("X");
+      case 6: if(btn_mr->text().isEmpty()){
+              btn_mr->setText("X");
+              checkWin();
+           player_name1->setText("Player 2");} //теперь первым ходит второй игрок
           break;
-      case 7: btn_bl->setText("X");
+      case 7: if(btn_bl->text().isEmpty()){
+              btn_bl->setText("X");
+           player_name1->setText("Player 2");} //теперь первым ходит второй игрок
           break;
-      case 8: btn_bm->setText("X");
+      case 8: if(btn_bm->text().isEmpty()){
+              btn_bm->setText("X");
+              checkWin();
+           player_name1->setText("Player 2");} //теперь первым ходит второй игрок
           break;
-      case 9: btn_br->setText("X");
+      case 9: if(btn_br->text().isEmpty()){
+              btn_br->setText("X");
+              checkWin();
+           player_name1->setText("Player 2");} //теперь первым ходит второй игрок
           break;
       }
-      if((btn_tl->text()=="X")&&(btn_tm->text()=="X")&&(btn_tr->text()=="X"))
-          QMessageBox::information(this,"Поздравляю!","Вы выиграли!");
-      player_name1->setText("Player 2");
+
+
 
     }
     else {
         switch(xo){
-        case 1: btn_tl->setText("O");
+        case 1: if(btn_tl->text().isEmpty()){
+                btn_tl->setText("O");
+                checkWin();
+             player_name1->setText("Player 1");}
 
             break;
-        case 2: btn_tm->setText("O");
+        case 2: if(btn_tm->text().isEmpty()){
+                btn_tm->setText("O");
+                checkWin();
+             player_name1->setText("Player 1");}
             break;
-        case 3: btn_tr->setText("O");
+        case 3: if(btn_tr->text().isEmpty()){
+                btn_tr->setText("O");
+                checkWin();
+             player_name1->setText("Player 1");}
             break;
-        case 4: btn_ml->setText("O");
+        case 4: if(btn_ml->text().isEmpty()){
+                btn_ml->setText("O");
+                checkWin();
+             player_name1->setText("Player 1");}
             break;
-        case 5: btn_mm->setText("O");
+        case 5: if(btn_mm->text().isEmpty()){
+                btn_mm->setText("O");
+                checkWin();
+             player_name1->setText("Player 1");}
             break;
-        case 6: btn_mr->setText("O");
+        case 6: if(btn_mr->text().isEmpty()){
+                btn_mr->setText("O");
+                checkWin();
+             player_name1->setText("Player 1");}
             break;
-        case 7: btn_bl->setText("O");
+        case 7: if(btn_bl->text().isEmpty()){
+                btn_bl->setText("O");
+                checkWin();
+             player_name1->setText("Player 1");}
             break;
-        case 8: btn_bm->setText("O");
+        case 8: if(btn_bm->text().isEmpty()){
+                btn_bm->setText("O");
+                checkWin();
+             player_name1->setText("Player 1");}
             break;
-        case 9: btn_br->setText("O");
+        case 9: if(btn_br->text().isEmpty()){
+                btn_br->setText("O");
+                checkWin();
+             player_name1->setText("Player 1");}
             break;
+            }
+         }
 
+}
+
+
+void Widget::checkWin()
+{
+    if(((btn_tl->text() == "X")&&(btn_tm->text() == "X")&&(btn_tr->text() == "X"))
+            || ((btn_tl->text() == "X") && (btn_mm->text() == "X") && (btn_br->text() == "X"))
+            || ((btn_bl->text() == "X") && (btn_mm->text() == "X") && (btn_tr->text() == "X"))
+            || ((btn_mr->text() == "X") && (btn_mm->text() == "X") && (btn_ml->text() == "X")))
+    {
+        QMessageBox::information(this,"Поздравляю!","Вы выиграли!");
+        clear();
     }
-        player_name1->setText("Player 1");
-}
+    else
+    {
+        changePlName();
+    }
+
 }
 
+void Widget::changePlName()
+{
+    if(player_name1->text() == "Player 1"){
+    player_name1->setText("Player 2");
+   }
+    else if(player_name1->text() == "Player 2"){
+    player_name1->setText("Player 1");
+    }
+}
+
+Widget::~Widget()
+{
+    delete ui;
+}

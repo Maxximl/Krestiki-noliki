@@ -2,17 +2,20 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <QMainWindow>
 #include <QtWidgets>
 namespace Ui {
 class Widget;
 }
 
-class Widget : public QWidget
+class Widget : public QMainWindow
 {
     Q_OBJECT
 
 public:
     explicit Widget(QWidget *parent = 0);
+    void checkWin();
+    void changePlName();
     ~Widget();
 
 private:
@@ -28,10 +31,9 @@ private:
     QPushButton *btn_br;
     QPushButton *btn_clear;
       QLabel *player_name1;
-        QString plname="Player 1";
+
 public slots:
-    void addX(int x);
-    void add0(int o);
+
     void clear();
     void buttonpressed(int xo);
 };
