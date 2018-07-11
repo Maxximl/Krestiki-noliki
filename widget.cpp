@@ -40,14 +40,14 @@ Widget::Widget(QWidget *parent) :
     grid->addWidget(btn_bm,3,1);
     grid->addWidget(btn_br,3,2);
 
-
+    grid->addWidget(btn_clear,4,0,1,3,Qt::AlignCenter);
     QWidget * centralWidget = new QWidget(this);
     centralWidget->setLayout(grid);
     setCentralWidget(centralWidget);
 
     //Размер и название окна
-//    resize(300,300);
-//    setWindowTitle("Крестики-нолики");
+    resize(300,300);
+    setWindowTitle("Крестики-нолики");
     //Задаем политику размера
     btn_tl->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Preferred);
     btn_tm->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Preferred);
